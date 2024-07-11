@@ -8,16 +8,16 @@ export class AppController {
 
   @Post('register')
   registerUser( @Body() registerUserDto: RegisterUserDto) {
-    return this.appService.getHello();
+    return this.appService.registerUser( registerUserDto );
   }
 
   @Post('login')
   loginUser( @Body() loginUserDto: LoginUserDto) {
-    return this.appService.getHello();
+    return 'getHello()';
   }
 
   @Get('verify')
   verifyToken() {
-    return this.appService.getHello();
+    return 'this.appService.getHello()';
   }
 }
