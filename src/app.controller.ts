@@ -13,7 +13,7 @@ export class AppController {
 
   @Post('login')
   loginUser( @Body() loginUserDto: LoginUserDto) {
-    return 'getHello()';
+    return this.appService.loginUser( loginUserDto );
   }
 
   @Get('verify')

@@ -6,6 +6,13 @@ meta {
 
 post {
   url: http://localhost:3001/api/auth/login
-  body: none
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "email": "edgar.gs@gmail.com",
+    "password": "UltraMagnusG1!"
+  }
 }
