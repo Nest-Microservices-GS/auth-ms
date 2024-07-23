@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Headers, Post, Request } from '@nestjs/common';
 import { AppService } from './app.service';
 import { LoginUserDto, RegisterUserDto } from './dto';
+import { log } from 'console';
 
 @Controller('auth')
 export class AppController {
@@ -17,7 +18,8 @@ export class AppController {
   }
 
   @Get('verify')
-  verifyToken() {
-    return 'this.appService.getHello()';
+  verifyToken(@Headers('authorization') auth) {
+    const token = auth.split(' ')[1];
+    return this.appService.verifyToken(token);
   }
 }

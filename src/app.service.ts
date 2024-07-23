@@ -80,4 +80,20 @@ export class AppService{
       throw new BadRequestException(error.message);
     }
   }
+
+  async verifyToken(token: string) {
+    try {
+      const { sub, iat, exp, ...user} = this.jwtService.verify(token,{
+        secret: 'AirBo0MLiberty3'
+      });
+
+      return {
+        user: user,
+        token: await this.signJWT({email: user.email, name: user.name})
+      }
+
+    } catch(error) {
+      throw new BadRequestException(error.message);
+    }
+  }
 }
