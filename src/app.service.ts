@@ -84,7 +84,7 @@ export class AppService{
   async verifyToken(token: string) {
     try {
       const { sub, iat, exp, ...user} = this.jwtService.verify(token,{
-        secret: 'AirBo0MLiberty3'
+        secret: process.env.JWT_SECRET
       });
 
       return {
